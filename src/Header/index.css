@@ -1,8 +1,11 @@
-.Header {
+.header {
     border: 7px solid #d5ec9e;
-    margin: 20px;
-    margin-bottom: 30px;
     border-radius: 7px;
     color: #258ba5;
     box-shadow: 7px 7px 7px #dfe5d1;
+}
+
+.header-layout {
+    margin: 20px;
+    margin-bottom: 30px;
 }
