@@ -15,15 +15,20 @@ const Card = props => {
                     className="head"
                     type="text"
                     value={props.person.name}
-                    onChange={( event ) => props.updateProperty( 'name', event.target.value )} />
-                <GiCancel 
-                    title="Отменить изменения"
-                    className="icon-button"
-                    onClick={props.cancel} />
-                <AiOutlineCheck 
-                    title="Сохранить"
-                    className='icon-button'
-                    onClick={props.save} />
+                    onChange={( event ) => props.updateProperty( props.person.id, 'name', event.target.value )} />
+                { 
+                    !props.isReadOnly?
+                        <span>
+                            <GiCancel 
+                                title="Отменить изменения"
+                                className="icon-button"
+                                onClick={() => props.cancel( props.person.id )} />
+                            <AiOutlineCheck 
+                                title="Сохранить"
+                                className='icon-button'
+                                onClick={() => props.save( props.person.id )} />
+                        </span> : null
+                }
             </p>;
         else 
             return <p className="head">
@@ -32,11 +37,14 @@ const Card = props => {
                     className="color-switcher" 
                     type="checkbox" 
                     checked={props.person.isChecked} 
-                    onChange={() => props.updateProperty( 'isChecked', props.person.isChecked ? false : true )} />
-                <TiPencil 
-                    title="Редактировать"
-                    className="icon-button" 
-                    onClick={props.editMode} />
+                    onChange={() => props.updateProperty( props.person.id, 'isChecked', props.person.isChecked ? false : true )} />
+                { 
+                    !props.isReadOnly ?
+                        <TiPencil 
+                            title="Редактировать"
+                            className="icon-button" 
+                            onClick={() => props.editMode( props.person.id )} /> : null
+                }
             </p>;
     };
 
@@ -46,11 +54,11 @@ const Card = props => {
                 <p><input
                     type="text"
                     value={props.person.department}
-                    onChange={( event ) => props.updateProperty( 'department', event.target.value )} /></p>
+                    onChange={( event ) => props.updateProperty( props.person.id, 'department', event.target.value )} /></p>
                 <p>Возраст: <input
                     type="text"
                     value={props.person.age}
-                    onChange={( event ) => props.updateProperty( 'age', event.target.value )} /></p>
+                    onChange={( event ) => props.updateProperty( props.person.id, 'age', event.target.value )} /></p>
             </div>;
         else
             return <div>
