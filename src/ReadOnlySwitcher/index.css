@@ -1,0 +1,8 @@
+.read-only-switcher {
+    text-align: left;
+    user-select: none;
+  }
+
+  .read-only-switcher-layout {
+    margin-left: 20px;
+  }
