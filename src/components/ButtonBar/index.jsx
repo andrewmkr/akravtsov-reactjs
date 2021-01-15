@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FcCheckmark } from "react-icons/fc";
 
-const ReadOnlyLabel = styled.label`
+const StyledLabel = styled.label`
     display: inline-block;
     cursor: pointer;
     font-size: 18px;
@@ -36,15 +36,20 @@ const ReadOnlyInput = styled.input`
     opacity: 0;
 `;
 
-const readOnlySwitcher = props => <ReadOnlyLabel>
-    Только просмотр
-    <ReadOnlySpan>
-        {props.checkbox ? <FcCheckmark size={19} /> : null}
-    </ReadOnlySpan>
-    <ReadOnlyInput
-        type="checkbox"
-        checked={props.checkbox}
-        onChange={props.change} />
-</ReadOnlyLabel>;
+const buttonBar = props => <div>
+    <StyledLabel>
+        Только просмотр
+        <ReadOnlySpan>
+            {props.checkbox ? <FcCheckmark size={19} /> : null}
+        </ReadOnlySpan>
+        <ReadOnlyInput
+            type="checkbox"
+            checked={props.checkbox}
+            onChange={props.change} />
+    </StyledLabel>
+    <StyledLabel onClick={props.delete}>
+        Удалить выбранные карточки
+    </StyledLabel>
+</div>;
 
-export default readOnlySwitcher;
+export default buttonBar;

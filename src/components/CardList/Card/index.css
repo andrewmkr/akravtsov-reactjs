@@ -28,21 +28,3 @@
     background-color: #e4e3ec;
     scale: 1.01;
 }
-
-.color-switcher {
-    float: right;
-    margin-top: 7px;
-    margin-right: 10px;
-}
-
-.head {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.icon-button {
-    float: right;
-    margin-top: 4px;
-    margin-right: 5px;
-    cursor: pointer;
-}
