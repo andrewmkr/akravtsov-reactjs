@@ -12,6 +12,7 @@ const StyledLabel = styled.label`
     border-radius: 3px;
     padding: 5px;
     box-shadow: 3px 3px 3px #c29c87;
+    background-color: white;
 
     &:hover {
         background-color: #c9d6da;
@@ -46,6 +47,9 @@ const buttonBar = props => <div>
             type="checkbox"
             checked={props.checkbox}
             onChange={props.change} />
+    </StyledLabel>
+    <StyledLabel onClick={props.createCard}>
+        Добавить карточку
     </StyledLabel>
     <StyledLabel onClick={props.delete}>
         Удалить выбранные карточки

@@ -24,7 +24,6 @@
     box-shadow: 5px 5px 5px #92abb1;
 }
 
-.card:hover {
+ .card:hover {
     background-color: #e4e3ec;
-    scale: 1.01;
-}
+} 
