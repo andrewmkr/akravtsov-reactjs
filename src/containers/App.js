@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import Header from '../components/Header';
-import ButtonBar from '../components/ButtonBar';
 import CardList from '../components/CardList';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
@@ -66,6 +66,7 @@ function App() {
     };
 
     pers.isChecked = false;
+    pers.isEditMode = false;
 
     const persArr = [ ...persons ];
     persArr[ indx ] = pers;
@@ -99,7 +100,14 @@ function App() {
       const pers = [ ...personsBackup ];
       
       const persArr = pers.map(( person, index ) => {
-        return Object.defineProperty( person, 'isChecked', { value: persons[ index ].isChecked });
+        return  Object.defineProperties( person, {
+          'isChecked': {
+            value: persons[index].isChecked
+          },
+          'isEditMode': {
+            value: false
+          }
+        });
       });
 
       setPersons( persArr );
@@ -129,13 +137,34 @@ function App() {
     }
   };
 
+  const createPerson = () => {
+    const pers = {
+      id: uuidv4(),
+      name: '',
+      age: '',
+      department: '',
+      isChecked: false,
+      isEditMode: isReadOnly ? false : true
+    }
+
+    const persArr = [ ...persons ];
+    persArr.push(pers);
+    setPersons(persArr);
+
+    const persArrBackup = [ ...personsBackup ];
+    persArrBackup.push(pers);
+    setPersonsBackup(persArrBackup);
+  };
+
   return (
     <div className="App">
-      <Header>Сотрудники</Header>
-      <ButtonBar
+      <Header
         checkbox={isReadOnly}
         change={readOnlyModeChange}
-        delete={deleteChecked} />
+        delete={deleteChecked}
+        createCard={createPerson} >
+        Сотрудники
+      </Header>  
       <CardList
         persons={persons}
         editMode={editMode}
@@ -143,7 +172,7 @@ function App() {
         cancel={cancelChanges}
         save={saveChanges}
         isReadOnly={isReadOnly} />
-    </div>
+    </div>  
   );
 }
 

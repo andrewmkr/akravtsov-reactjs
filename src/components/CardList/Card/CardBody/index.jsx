@@ -1,9 +1,13 @@
 const cardBody = props => {
+    const department = props.person.department === '' ? 'Отдел не указан' : props.person.department;
+    const age = props.person.age === '' ? 'Не указан' : props.person.age;
+    
     if ( props.person.isEditMode )
         return <div>
             <p><input
                 type="text"
                 value={props.person.department}
+                placeholder="Отдел"
                 onChange={( event ) => props.updateProperty( props.person.id, 'department', event.target.value )} /></p>
             <p>Возраст: <input
                 type="text"
@@ -12,8 +16,8 @@ const cardBody = props => {
         </div>;
     else
         return <div>
-            <p>{props.person.department}</p>
-            <p>Возраст: {props.person.age}</p>
+            <p>{department}</p>
+            <p>Возраст: {age}</p>
         </div>;
 };
 

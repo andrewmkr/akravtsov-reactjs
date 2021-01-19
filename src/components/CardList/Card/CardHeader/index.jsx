@@ -4,11 +4,14 @@ import { GiCancel } from 'react-icons/gi';
 import "./index.css";
 
 const cardHeader = props => {
+    const name = props.person.name === '' ? 'Имя не указано' : props.person.name;
+
     if ( props.person.isEditMode ) 
         return <p>
             <input 
                 className="head"
                 type="text"
+                placeholder="Имя и фамилия"
                 value={props.person.name}
                 onChange={( event ) => props.updateProperty( props.person.id, 'name', event.target.value )} />
             { 
@@ -27,7 +30,7 @@ const cardHeader = props => {
         </p>;
     else 
         return <p className="head">
-            {props.person.name}
+            {name}
             <input 
                 className="color-switcher" 
                 type="checkbox" 

@@ -1,12 +1,14 @@
 .header {
-    text-align: center;
-    border: 7px solid #d5ec9e;
-    border-radius: 7px;
-    color: #258ba5;
-    box-shadow: 7px 7px 7px #dfe5d1;
+    background-color: rgb(245, 245, 239);
+    border-bottom-style: solid;
+    border-bottom-color: grey;
 }
 
 .header-layout {
-    margin: 20px;
-    margin-bottom: 30px;
+    position: fixed;
+    width: 100%;
+}
+
+.placeholder {
+    height: 240px;
 }
