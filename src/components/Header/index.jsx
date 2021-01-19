@@ -7,9 +7,9 @@ const header = props => <div >
     <Title>{props.children}</Title>
     <ButtonBar
         checkbox={props.checkbox}
-        change={props.change}
-        delete={props.delete}
-        createCard={props.createCard} />
+        onChange={props.onChange}
+        onDelete={props.onDelete}
+        onCreate={props.onCreate} />
     </div>
     <div className="placeholder" />
 </div>;

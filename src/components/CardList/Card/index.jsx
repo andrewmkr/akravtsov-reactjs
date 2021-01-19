@@ -1,5 +1,6 @@
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
+import withLoadingDelay from '../../../hoc/withLoadingDelay';
 import './index.css';
 
 const card = props => {
@@ -12,8 +13,8 @@ const card = props => {
             person={props.person}
             editMode={props.editMode}
             updateProperty={props.updateProperty}
-            cancel={props.cancel}
-            save={props.save}
+            onCancel={props.onCancel}
+            onSave={props.onSave}
             isReadOnly={props.isReadOnly} />
         <hr />
         <CardBody
@@ -22,4 +23,4 @@ const card = props => {
     </div>
 };
 
-export default card;
+export default withLoadingDelay( card );

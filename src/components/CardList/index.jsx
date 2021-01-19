@@ -18,8 +18,8 @@ const CardList = props => {
             person={person}
             editMode={props.editMode}
             updateProperty={props.updateProperty}
-            cancel={props.cancel}
-            save={props.save}
+            onCancel={props.onCancel}
+            onSave={props.onSave}
             isReadOnly={props.isReadOnly}
             key={person.id} />
         });
