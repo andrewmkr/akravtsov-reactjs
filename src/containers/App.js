@@ -3,6 +3,7 @@ import './App.css';
 import Header from '../components/Header';
 import CardList from '../components/CardList';
 import { v4 as uuidv4 } from 'uuid';
+import PersonsContext from '../context/persons-context';
 
 function App() {
 
@@ -158,13 +159,15 @@ function App() {
 
   return (
     <div className="App">
-      <Header
-        checkbox={isReadOnly}
-        onChange={readOnlyModeChange}
-        onDelete={deleteChecked}
-        onCreate={createPerson} >
-        Сотрудники
-      </Header>  
+      <PersonsContext.Provider value={{
+        persons: persons,
+        isReadOnly: isReadOnly,
+        readOnly: readOnlyModeChange,
+        onCreate: createPerson,
+        onDelete: deleteChecked
+      }}>
+        <Header>Сотрудники</Header>
+      </PersonsContext.Provider>  
       <CardList
         persons={persons}
         editMode={editMode}

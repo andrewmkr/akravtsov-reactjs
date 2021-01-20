@@ -11,3 +11,19 @@
     margin: 20px;
     margin-bottom: 30px;
 }
+
+.badge {
+    font-size: 60%;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 0.25rem;
+    color: #fff;
+    background-color: #007bff;
+}
+
+.badge-layout {
+    padding: 6px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 8px;
+}
