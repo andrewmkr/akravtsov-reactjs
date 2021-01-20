@@ -46,12 +46,12 @@ const buttonBar = props => <div>
         <ReadOnlyInput
             type="checkbox"
             checked={props.checkbox}
-            onChange={props.change} />
+            onChange={props.onChange} />
     </StyledLabel>
-    <StyledLabel onClick={props.createCard}>
+    <StyledLabel onClick={props.onCreate}>
         Добавить карточку
     </StyledLabel>
-    <StyledLabel onClick={props.delete}>
+    <StyledLabel onClick={props.onDelete}>
         Удалить выбранные карточки
     </StyledLabel>
 </div>;

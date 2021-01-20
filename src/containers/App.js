@@ -160,17 +160,17 @@ function App() {
     <div className="App">
       <Header
         checkbox={isReadOnly}
-        change={readOnlyModeChange}
-        delete={deleteChecked}
-        createCard={createPerson} >
+        onChange={readOnlyModeChange}
+        onDelete={deleteChecked}
+        onCreate={createPerson} >
         Сотрудники
       </Header>  
       <CardList
         persons={persons}
         editMode={editMode}
         updateProperty={updatePersonProperty}
-        cancel={cancelChanges}
-        save={saveChanges}
+        onCancel={cancelChanges}
+        onSave={saveChanges}
         isReadOnly={isReadOnly} />
     </div>  
   );
