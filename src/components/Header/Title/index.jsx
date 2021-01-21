@@ -1,5 +1,5 @@
 import "./index.css";
-import PersonsContext from '../../../context/persons-context';
+import { PersonsContext } from '../../../context/persons-context';
 import { useContext } from "react";
 
 const Title = props => {

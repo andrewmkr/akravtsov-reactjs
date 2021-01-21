@@ -1,26 +1,24 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Card from './Card';
 import './index.css';
+import { PersonsContext } from '../../context/persons-context';
 
 const CardList = props => {
-    const [persCount, setPersCount] = useState( props.persons.length );
+    const personsContext = useContext(PersonsContext);
+
+    const [persCount, setPersCount] = useState( personsContext.persons.length );
     const scrollerRef = useRef( null );
 
     useEffect(() => {
-        if ( persCount < props.persons.length ) {
+        if ( persCount < personsContext.persons.length ) {
             scrollerRef.current.scrollIntoView({ behavior: 'smooth' }); 
         }
-        setPersCount( props.persons.length );
-    }, [persCount, props.persons.length]);
+        setPersCount( personsContext.persons.length );
+    }, [persCount, personsContext.persons.length]);
 
-    const list = () => props.persons.map( person => {
+    const list = () => personsContext.persons.map( person => {
         return <Card
             person={person}
-            editMode={props.editMode}
-            updateProperty={props.updateProperty}
-            onCancel={props.onCancel}
-            onSave={props.onSave}
-            isReadOnly={props.isReadOnly}
             key={person.id} />
         });
 

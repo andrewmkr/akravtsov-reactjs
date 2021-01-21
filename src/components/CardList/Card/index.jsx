@@ -11,16 +11,10 @@ const card = props => {
 
     return <div className={cardClasses.join(' ')}>
         <CardHeader
-            person={props.person}
-            editMode={props.editMode}
-            updateProperty={props.updateProperty}
-            onCancel={props.onCancel}
-            onSave={props.onSave}
-            isReadOnly={props.isReadOnly} />
+            person={props.person} />
         <hr />
         <CardBody
-            person={props.person}
-            updateProperty={props.updateProperty} />
+            person={props.person} />
     </div>
 };
 
@@ -32,12 +26,7 @@ card.propTypes = {
         department: PropTypes.string,
         isChecked: PropTypes.bool,
         isEditMode: PropTypes.bool
-    }),
-    editMode: PropTypes.func,
-    updateProperty: PropTypes.func,
-    onCancel: PropTypes.func,
-    onSave: PropTypes.func,
-    isReadOnly: PropTypes.bool
+    })
 };
 
 export default withLoadingDelay( card );
