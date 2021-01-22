@@ -1,7 +1,18 @@
 import "./index.css";
+import { PersonsContext } from '../../../context/persons-context';
+import { useContext } from "react";
 
-const title = props => <div className="title title-layout">
-    <h1>{props.children}</h1>
-</div>;
+const Title = props => {
+    const personsContext = useContext( PersonsContext );
 
-export default title;
+    return <div className="title title-layout">
+        <h1>
+            {props.children}
+            <span className="badge badge-layout">
+                Всего: {personsContext.persons.length}
+            </span>
+        </h1>
+    </div>
+};
+
+export default Title;

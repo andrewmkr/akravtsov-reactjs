@@ -2,8 +2,11 @@ import { TiPencil } from 'react-icons/ti';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { GiCancel } from 'react-icons/gi';
 import "./index.css";
+import { PersonsContext } from '../../../../context/persons-context';
+import { useContext } from 'react';
 
-const cardHeader = props => {
+const CardHeader = props => {
+    const personsContext = useContext(PersonsContext);
     const name = props.person.name === '' ? 'Имя не указано' : props.person.name;
 
     const editModeHeader = <p>
@@ -12,18 +15,18 @@ const cardHeader = props => {
             type="text"
             placeholder="Имя и фамилия"
             value={props.person.name}
-            onChange={( event ) => props.updateProperty( props.person.id, 'name', event.target.value )} />
+            onChange={( event ) => personsContext.updatePersonProperty( props.person.id, 'name', event.target.value )} />
         { 
-            !props.isReadOnly?
+            !personsContext.isReadOnly ?
                 <span>
                     <GiCancel 
                         title="Отменить изменения"
                         className="icon-button"
-                        onClick={() => props.onCancel( props.person.id )} />
+                        onClick={() => personsContext.cancelChanges( props.person.id )} />
                     <AiOutlineCheck 
                         title="Сохранить"
                         className='icon-button'
-                        onClick={() => props.onSave( props.person.id )} />
+                        onClick={() => personsContext.saveChanges( props.person.id )} />
                 </span> : null
         }
     </p>;
@@ -34,17 +37,17 @@ const cardHeader = props => {
             className="color-switcher" 
             type="checkbox" 
             checked={props.person.isChecked} 
-            onChange={() => props.updateProperty( props.person.id, 'isChecked', props.person.isChecked ? false : true )} />
+            onChange={() => personsContext.updatePersonProperty( props.person.id, 'isChecked', props.person.isChecked ? false : true )} />
         { 
-            !props.isReadOnly ?
+            !personsContext.isReadOnly ?
                 <TiPencil 
                     title="Редактировать"
                     className="icon-button" 
-                    onClick={() => props.editMode( props.person.id )} /> : null
+                    onClick={() => personsContext.editMode( props.person.id )} /> : null
         }
     </p>;
 
     return props.person.isEditMode ? editModeHeader : readModeHeader;
 };
 
-export default cardHeader;
+export default CardHeader;
