@@ -1,29 +1,25 @@
 import { useContext } from 'react';
-import { PersonsContext } from '../../../../context/persons-context';
+import { CardContext } from '../../../../context/card-context';
+import './index.css';
 
 const CardBody = props => {
-    const personsContext = useContext(PersonsContext);
-    const department = props.person.department === '' ? 'Отдел не указан' : props.person.department;
-    const age = props.person.age === '' ? 'Не указан' : props.person.age;
+    const cardContext = useContext(CardContext);
+    const text = props.card.text === '' ? 'Текст отсутствует' : props.card.text;
 
     const editModeBody = <div>
-        <p><input
-            type="text"
-            value={props.person.department}
-            placeholder="Отдел"
-            onChange={( event ) => personsContext.updatePersonProperty( props.person.id, 'department', event.target.value )} /></p>
-        <p>Возраст: <input
-            type="text"
-            value={props.person.age}
-            onChange={( event ) => personsContext.updatePersonProperty( props.person.id, 'age', event.target.value )} /></p>
+        <textarea 
+            className="text-input"
+            value={props.card.text}
+            placeholder="Текст"
+            onChange={( event ) => cardContext.updateCardProperty( props.card.id, 'text', event.target.value )} >
+        </textarea>
     </div>;
 
     const readModeBody = <div>
-        <p>{department}</p>
-        <p>Возраст: {age}</p>
+        <p className="text-output">{text}</p>
     </div>;
 
-    return props.person.isEditMode ? editModeBody : readModeBody;
+    return props.card.isEditMode ? editModeBody : readModeBody;
 };
 
 export default CardBody;

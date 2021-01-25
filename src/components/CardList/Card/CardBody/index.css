@@ -1,0 +1,9 @@
+.text-input {
+    width: 290px;
+    height: 140px;
+    resize: none;
+}
+
+.text-output {
+    word-wrap: break-word;
+}

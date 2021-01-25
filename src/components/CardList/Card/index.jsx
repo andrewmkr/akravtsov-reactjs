@@ -7,23 +7,22 @@ import PropTypes from 'prop-types';
 const card = props => {
     const cardClasses = [ 'card', 'card-layout' ];
 
-    cardClasses.push( props.person.isChecked ? 'card-checked-border' : 'card-unchecked-border' );
+    cardClasses.push( props.card.isChecked ? 'card-checked-border' : 'card-unchecked-border' );
 
     return <div className={cardClasses.join(' ')}>
         <CardHeader
-            person={props.person} />
+            card={props.card} />
         <hr />
         <CardBody
-            person={props.person} />
+            card={props.card} />
     </div>
 };
 
 card.propTypes = {
-    person: PropTypes.shape({
+    card: PropTypes.shape({
         id: PropTypes.string,
-        name: PropTypes.string,
-        age: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
-        department: PropTypes.string,
+        title: PropTypes.string,
+        text: PropTypes.string,
         isChecked: PropTypes.bool,
         isEditMode: PropTypes.bool
     })
