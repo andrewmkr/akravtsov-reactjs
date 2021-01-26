@@ -1,25 +1,25 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import Card from './Card';
 import './index.css';
-import { PersonsContext } from '../../context/persons-context';
+import { CardContext } from '../../context/card-context';
 
 const CardList = props => {
-    const personsContext = useContext(PersonsContext);
+    const cardContext = useContext( CardContext );
 
-    const [persCount, setPersCount] = useState( personsContext.persons.length );
+    const [cardsCount, setCardsCount] = useState( cardContext.cards.length );
     const scrollerRef = useRef( null );
 
     useEffect(() => {
-        if ( persCount < personsContext.persons.length ) {
+        if ( cardsCount !== 0 && cardsCount < cardContext.cards.length ) {
             scrollerRef.current.scrollIntoView({ behavior: 'smooth' }); 
         }
-        setPersCount( personsContext.persons.length );
-    }, [persCount, personsContext.persons.length]);
+        setCardsCount( cardContext.cards.length );
+    }, [cardsCount, cardContext.cards.length]);
 
-    const list = () => personsContext.persons.map( person => {
+    const list = () => cardContext.cards.map( card => {
         return <Card
-            person={person}
-            key={person.id} />
+            card={card}
+            key={card.id} />
         });
 
     return <div>

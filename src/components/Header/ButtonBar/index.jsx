@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FcCheckmark } from "react-icons/fc";
-import { PersonsContext } from '../../../context/persons-context';
+import { CardContext } from '../../../context/card-context';
 import { useContext } from "react";
 
 const StyledLabel = styled.label`
@@ -40,23 +40,23 @@ const ReadOnlyInput = styled.input`
 `;
 
 const ButtonBar = props => {
-    const personsContext = useContext( PersonsContext );
+    const cardContext = useContext( CardContext );
 
     return <div>
         <StyledLabel>
             Только просмотр
             <ReadOnlySpan>
-                {personsContext.isReadOnly ? <FcCheckmark size={19} /> : null}
+                {cardContext.isReadOnly ? <FcCheckmark size={19} /> : null}
             </ReadOnlySpan>
             <ReadOnlyInput
                 type="checkbox"
-                checked={personsContext.isReadOnly}
-                onChange={personsContext.readOnlyModeChange} />
+                checked={cardContext.isReadOnly}
+                onChange={cardContext.readOnlyModeChange} />
         </StyledLabel>
-        <StyledLabel onClick={personsContext.createPerson}>
+        <StyledLabel onClick={cardContext.createCard}>
             Добавить карточку
         </StyledLabel>
-        <StyledLabel onClick={personsContext.deleteChecked}>
+        <StyledLabel onClick={cardContext.deleteChecked}>
             Удалить выбранные карточки
         </StyledLabel>
     </div>;

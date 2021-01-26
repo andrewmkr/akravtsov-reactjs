@@ -1,16 +1,16 @@
 import './App.css';
 import Header from '../components/Header';
 import CardList from '../components/CardList';
-import PersonsContextComponent from '../context/persons-context';
+import CardContextComponent from '../context/card-context';
 
 function App() {
   return (
-    <PersonsContextComponent>
+    <CardContextComponent>
       <div className="App">
         <Header>Сотрудники</Header>  
         <CardList />
       </div>  
-    </PersonsContextComponent>
+    </CardContextComponent>
   );
 }
 
