@@ -4,7 +4,6 @@ import './index.css';
 
 const CardBody = props => {
     const cardContext = useContext(CardContext);
-    const text = props.card.text === '' ? 'Текст отсутствует' : props.card.text;
 
     const editModeBody = <div>
         <textarea 
@@ -16,7 +15,7 @@ const CardBody = props => {
     </div>;
 
     const readModeBody = <div>
-        <p className="text-output">{text}</p>
+        <p className="text-output">{props.card.text}</p>
     </div>;
 
     return props.card.isEditMode ? editModeBody : readModeBody;

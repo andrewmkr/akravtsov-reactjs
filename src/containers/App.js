@@ -7,7 +7,7 @@ function App() {
   return (
     <CardContextComponent>
       <div className="App">
-        <Header>Сотрудники</Header>  
+        <Header>Покемоны</Header>  
         <CardList />
       </div>  
     </CardContextComponent>

@@ -10,7 +10,7 @@ const CardList = props => {
     const scrollerRef = useRef( null );
 
     useEffect(() => {
-        if ( cardsCount !== 0 && cardsCount < cardContext.cards.length ) {
+        if ( cardsCount && cardsCount < cardContext.cards.length ) {
             scrollerRef.current.scrollIntoView({ behavior: 'smooth' }); 
         }
         setCardsCount( cardContext.cards.length );
