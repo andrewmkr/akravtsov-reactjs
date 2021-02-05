@@ -1,0 +1,38 @@
+.Navbar {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: rgb(238, 238, 226);
+    border-bottom: 1px solid black;
+}
+
+.Navbar-layout {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.Navbar li {
+    float: left;
+}
+
+.Navbar a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.Navbar a:hover {
+    background-color: rgb(190, 190, 183);
+}
+
+.Navbar a.active {
+    background-color: rgb(89, 143, 224);
+}
+
+.navbar-placeholder {
+    height: 50px;
+}

@@ -7,7 +7,6 @@ import { useContext } from 'react';
 
 const CardHeader = props => {
     const cardContext = useContext( CardContext );
-    const title = props.card.title === '' ? 'Заголовок не указан' : props.card.title;
 
     const editModeHeader = <p>
         <input 
@@ -32,12 +31,12 @@ const CardHeader = props => {
     </p>;
 
     const readModeHeader = <p className="head">
-        {title}
+        {props.card.title}
         <input 
             className="color-switcher" 
             type="checkbox" 
             checked={props.card.isChecked} 
-            onChange={() => cardContext.updateCardProperty( props.card.id, 'isChecked', props.card.isChecked ? false : true )} />
+            onChange={() => cardContext.updateCardProperty( props.card.id, 'isChecked', !props.card.isChecked )} />
         { 
             !cardContext.isReadOnly ?
                 <TiPencil 

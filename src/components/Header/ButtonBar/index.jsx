@@ -46,7 +46,7 @@ const ButtonBar = props => {
         <StyledLabel>
             Только просмотр
             <ReadOnlySpan>
-                {cardContext.isReadOnly ? <FcCheckmark size={19} /> : null}
+                {cardContext.isReadOnly && <FcCheckmark size={19} />}
             </ReadOnlySpan>
             <ReadOnlyInput
                 type="checkbox"
