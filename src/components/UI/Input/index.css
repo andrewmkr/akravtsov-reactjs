@@ -1,0 +1,30 @@
+.input-element {
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgb(247, 244, 244);
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgb(202, 190, 190);
+    text-align: center;
+}
+
+.input-element-layout {
+    width: 76%;
+    padding: 10px 20px;
+    margin-left: 46px;
+    margin-top: 15px;
+}
+
+.input-invalid {
+    border: 1px solid red;
+    background-color: salmon;
+}
+
+.error-message {
+    color: red;
+    margin: 0;
+    text-align: center;
+}
