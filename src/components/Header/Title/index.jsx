@@ -1,15 +1,15 @@
+import { useSelector } from 'react-redux';
+
 import "./index.css";
-import { CardContext } from '../../../context/card-context';
-import { useContext } from "react";
 
 const Title = props => {
-    const cardContext = useContext( CardContext );
+    const state = useSelector(state => state);
 
     return <div className="title title-layout">
         <h1>
             {props.children}
             <span className="badge badge-layout">
-                Всего: {cardContext.cards.length}
+                Всего: {state.cards.length}
             </span>
         </h1>
     </div>

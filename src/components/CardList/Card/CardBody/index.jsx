@@ -1,16 +1,13 @@
-import { useContext } from 'react';
-import { CardContext } from '../../../../context/card-context';
 import './index.css';
 
 const CardBody = props => {
-    const cardContext = useContext(CardContext);
 
     const editModeBody = <div>
         <textarea 
             className="text-input"
             value={props.card.text}
             placeholder="Текст"
-            onChange={( event ) => cardContext.updateCardProperty( props.card.id, 'text', event.target.value )} >
+            onChange={(event) => props.onUpdate('text', event.target.value)} >
         </textarea>
     </div>;
 

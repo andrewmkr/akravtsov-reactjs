@@ -1,12 +1,10 @@
 import { TiPencil } from 'react-icons/ti';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { GiCancel } from 'react-icons/gi';
+
 import "./index.css";
-import { CardContext } from '../../../../context/card-context';
-import { useContext } from 'react';
 
 const CardHeader = props => {
-    const cardContext = useContext( CardContext );
 
     const editModeHeader = <p>
         <input 
@@ -14,18 +12,18 @@ const CardHeader = props => {
             type="text"
             placeholder="Заголовок"
             value={props.card.title}
-            onChange={( event ) => cardContext.updateCardProperty( props.card.id, 'title', event.target.value )} />
+            onChange={(event) => props.onUpdate('title', event.target.value)} />
         { 
-            !cardContext.isReadOnly ?
+            !props.readOnly ?
                 <span>
                     <GiCancel 
                         title="Отменить изменения"
                         className="icon-button"
-                        onClick={() => cardContext.cancelChanges( props.card.id )} />
+                        onClick={props.onCancel} />
                     <AiOutlineCheck 
                         title="Сохранить"
                         className='icon-button'
-                        onClick={() => cardContext.saveChanges( props.card.id )} />
+                        onClick={props.onSave} />
                 </span> : null
         }
     </p>;
@@ -36,13 +34,13 @@ const CardHeader = props => {
             className="color-switcher" 
             type="checkbox" 
             checked={props.card.isChecked} 
-            onChange={() => cardContext.updateCardProperty( props.card.id, 'isChecked', !props.card.isChecked )} />
+            onChange={props.onCheck} />
         { 
-            !cardContext.isReadOnly ?
+            !props.readOnly ?
                 <TiPencil 
                     title="Редактировать"
                     className="icon-button" 
-                    onClick={() => cardContext.editMode( props.card.id )} /> : null
+                    onClick={props.onEdit} /> : null
         }
     </p>;
 

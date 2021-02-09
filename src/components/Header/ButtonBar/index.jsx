@@ -1,7 +1,9 @@
+import { useSelector, useDispatch } from 'react-redux';
 import styled from "styled-components";
+
 import { FcCheckmark } from "react-icons/fc";
-import { CardContext } from '../../../context/card-context';
-import { useContext } from "react";
+import * as actionTypes from '../../../store/types';
+
 
 const StyledLabel = styled.label`
     display: inline-block;
@@ -40,23 +42,24 @@ const ReadOnlyInput = styled.input`
 `;
 
 const ButtonBar = props => {
-    const cardContext = useContext( CardContext );
+    const state = useSelector(state => state);
+    const dispatch = useDispatch();
 
     return <div>
         <StyledLabel>
             Только просмотр
             <ReadOnlySpan>
-                {cardContext.isReadOnly && <FcCheckmark size={19} />}
+                {state.readOnlyMode && <FcCheckmark size={19} />}
             </ReadOnlySpan>
             <ReadOnlyInput
                 type="checkbox"
-                checked={cardContext.isReadOnly}
-                onChange={cardContext.readOnlyModeChange} />
+                checked={state.readOnlyMode}
+                onChange={() => dispatch({type: actionTypes.READ_ONLY})} />
         </StyledLabel>
-        <StyledLabel onClick={cardContext.createCard}>
+        <StyledLabel onClick={() => dispatch({type: actionTypes.ADD_CARD})}>
             Добавить карточку
         </StyledLabel>
-        <StyledLabel onClick={cardContext.deleteChecked}>
+        <StyledLabel onClick={() => dispatch({type: actionTypes.DELETE_CHECKED})}>
             Удалить выбранные карточки
         </StyledLabel>
     </div>;

@@ -1,6 +1,7 @@
 .card {
     border-radius: 5px;
     text-align: left;
+    user-select: none;
 }
 
 .card-layout {

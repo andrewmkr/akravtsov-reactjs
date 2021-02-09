@@ -1,26 +1,26 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import Card from './Card';
 import './index.css';
-import { CardContext } from '../../context/card-context';
 
 const CardList = props => {
-    const cardContext = useContext( CardContext );
-
-    const [cardsCount, setCardsCount] = useState( cardContext.cards.length );
+    const state = useSelector(state => state);
+    const [cardsCount, setCardsCount] = useState( state.cards.length );
     const scrollerRef = useRef( null );
 
     useEffect(() => {
-        if ( cardsCount && cardsCount < cardContext.cards.length ) {
+        if ( cardsCount && cardsCount < state.cards.length ) {
             scrollerRef.current.scrollIntoView({ behavior: 'smooth' }); 
         }
-        setCardsCount( cardContext.cards.length );
-    }, [cardsCount, cardContext.cards.length]);
+        setCardsCount( state.cards.length );
+    }, [cardsCount, state.cards.length]);
 
-    const list = () => cardContext.cards.map( card => {
+    const list = () => state.cards.map(card => {
         return <Card
             card={card}
             key={card.id} />
-        });
+    });
 
     return <div>
         {list()}
