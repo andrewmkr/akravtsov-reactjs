@@ -9,6 +9,10 @@
     font-weight: bold;
 }
 
+.head-input {
+    width: 80%;
+}
+
 .icon-button {
     float: right;
     margin-top: 4px;

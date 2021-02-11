@@ -48,33 +48,16 @@ const updateCard = (state, action) => {
     });
     const updatedArr = [...state.cards];
 
-    updatedArr[idx] = {
-        id: action.card.id,
-        title: action.card.title,
-        text: action.card.text,
-        isChecked: action.card.isChecked
-    };
+    updatedArr[idx] = {...action.card};
 
     return updatedArr;
 }
 
-const deleteChecked = (state) => {
-    const ids = [];
-
-    state.cards.forEach(card => {
-        if (card.isChecked) ids.push(card.id);
-    });
-
-    if (ids.length > 0) {
-        const updatedArr = state.cards.filter(card => {
-            return !ids.includes(card.id);
-        });
-        return updatedArr;
-    }
-    return state.cards;
+const deleteChecked = state => {
+    return state.cards.filter(card => !card.isChecked);
 }
 
-const createCard = (state) => {
+const createCard = state => {
     const newCard = {
         id: uuidv4(),
         title: '',

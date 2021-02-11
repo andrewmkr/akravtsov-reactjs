@@ -64,10 +64,11 @@ const Card = props => {
     }
 
     const doubleClickHandler = () => {
-        if (!card.isEditMode) history.push('/card/' + card.id);
+        if (!card.isEditMode && !props.isFullMode) history.push('/card/' + card.id);
     }
     
-    cardClasses.push( card.isChecked ? 'card-checked-border' : 'card-unchecked-border' );
+    cardClasses.push(card.isChecked ? 'card-checked-border' : 'card-unchecked-border');
+    cardClasses.push(props.isFullMode ? 'full-mode' : 'list-mode');
 
     return <div className={cardClasses.join(' ')} onDoubleClick={doubleClickHandler}>
         <CardHeader

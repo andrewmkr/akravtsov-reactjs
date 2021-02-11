@@ -8,7 +8,7 @@ const CardHeader = props => {
 
     const editModeHeader = <p>
         <input 
-            className="head"
+            className="head head-input"
             type="text"
             placeholder="Заголовок"
             value={props.card.title}

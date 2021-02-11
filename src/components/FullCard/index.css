@@ -1,56 +1,6 @@
-.Full-card-wrapper {
-    border-radius: 1.5em;
-    border: 5px solid #216477;
-    box-shadow: 5px 5px 5px #92abb1;
-}
-
-.Full-card-wrapper-layout {
-    width: 400px;
-    min-height: 240px;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    padding: 15px;
-}
-
-.Full-card-wrapper input {
-    width: 385px;
-    margin-bottom: 15px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.Full-card-wrapper textarea {
-    width: 390px;
-    height: 140px;
-    margin-bottom: 15px;
-    resize: none;
-    word-wrap: break-word;
-}
-
-.full-card-button {
-    width: 120px;
-    cursor: pointer;
-    border-radius: 5em;
-    border: 0;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    margin-left: 50px;
-    font-size: 13px;
-    outline: none;
-}
-
-.full-card-save {
-    background-color: rgb(79, 204, 79);
-}
-
-.full-card-cancel {
-    background-color: rgb(221, 107, 107);
-}
-
-.spinner-wrapper {
+.full-card-wrapper {
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
+    margin-top: 50px;
 }
