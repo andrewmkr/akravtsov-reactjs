@@ -63,14 +63,12 @@ const Card = props => {
         setCard(obj);
     }
 
-    const doubleClickHandler = () => {
-        if (!card.isEditMode && !props.isFullMode) history.push('/card/' + card.id);
-    }
+    const doubleClickHandler = () => history.push('/card/' + card.id);
     
     cardClasses.push(card.isChecked ? 'card-checked-border' : 'card-unchecked-border');
     cardClasses.push(props.isFullMode ? 'full-mode' : 'list-mode');
 
-    return <div className={cardClasses.join(' ')} onDoubleClick={doubleClickHandler}>
+    return <div className={cardClasses.join(' ')} onDoubleClick={!card.isEditMode && !props.isFullMode ? doubleClickHandler : undefined}>
         <CardHeader
             card={card}
             readOnly={state.readOnlyMode}
