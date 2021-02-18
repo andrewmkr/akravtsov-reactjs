@@ -8,15 +8,7 @@ import './index.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 import reducer from './store/cards';
-
-const logger = () => {
-  return next => {
-    return action => {
-      console.log('[Middleware] Dispatching', action);
-      return next(action);
-    }
-  }
-};
+import { logger } from '../src/store/middleware';
 
 const store = createStore(reducer, applyMiddleware(logger, thunk));
 
