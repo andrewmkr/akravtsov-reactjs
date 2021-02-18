@@ -9,7 +9,16 @@ import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 import reducer from './store/cards';
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const logger = () => {
+  return next => {
+    return action => {
+      console.log('[Middleware] Dispatching', action);
+      return next(action);
+    }
+  }
+};
+
+const store = createStore(reducer, applyMiddleware(logger, thunk));
 
 ReactDOM.render(
   <Provider store={store}>
