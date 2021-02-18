@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
-import reducer from './store/cards';
+import cardsReducer from './store/cards';
+import authReducer from './store/auth';
 import { logger } from '../src/store/middleware';
 
-const store = createStore(reducer, applyMiddleware(logger, thunk));
+const combinedReducer = combineReducers({
+  cards: cardsReducer,
+  auth: authReducer
+});
+
+const store = createStore(combinedReducer, applyMiddleware(logger, thunk));
 
 ReactDOM.render(
   <Provider store={store}>

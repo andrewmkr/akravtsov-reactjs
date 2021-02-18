@@ -9,7 +9,7 @@ const Title = props => {
         <h1>
             {props.children}
             <span className="badge badge-layout">
-                Всего: {state.cards.length}
+                Всего: {state.cards.cards.length}
             </span>
         </h1>
     </div>

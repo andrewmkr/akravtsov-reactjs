@@ -20,11 +20,11 @@ const Card = props => {
     });
 
     useEffect(() => {
-        if (state.readOnlyMode) {
+        if (state.cards.readOnlyMode) {
             cancelChanges();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [state.readOnlyMode]);
+    }, [state.cards.readOnlyMode]);
 
     const checkCard = () => {
         const obj = {...card};
@@ -71,7 +71,7 @@ const Card = props => {
     return <div className={cardClasses.join(' ')} onDoubleClick={!card.isEditMode && !props.isFullMode ? doubleClickHandler : undefined}>
         <CardHeader
             card={card}
-            readOnly={state.readOnlyMode}
+            readOnly={state.cards.readOnlyMode}
             onCheck={checkCard}
             onEdit={editMode}
             onUpdate={updateCardProperty}
@@ -80,7 +80,7 @@ const Card = props => {
         <hr />
         <CardBody
             card={card}
-            readOnly={state.readOnlyMode}
+            readOnly={state.cards.readOnlyMode}
             onUpdate={updateCardProperty} />
     </div>
 };

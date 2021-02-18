@@ -10,5 +10,9 @@
 }
 
 .placeholder {
+    height: 180px;
+}
+
+.placeholder-big {
     height: 240px;
 }
