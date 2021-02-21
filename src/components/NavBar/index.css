@@ -36,3 +36,10 @@
 .navbar-placeholder {
     height: 50px;
 }
+
+.navbar-icon-settings {
+    margin-top: 9px;
+    margin-right: 15px;
+    float: right;
+    cursor: pointer;
+}

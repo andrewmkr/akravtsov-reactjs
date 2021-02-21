@@ -7,10 +7,10 @@ import Card from '../CardList/Card';
 
 const FullCard = props => {
     const state = useSelector(state => state);
-    const card = state.cards.find(card => card.id === props.match.params.id);
+    const card = state.cards.cards.find(card => card.id === props.match.params.id);
 
     const cardContent = () => {
-        if (state.cards.length) {
+        if (state.cards.cards.length) {
             return card ? <div className="full-card-wrapper">
                 <Card card={card} isFullMode={true} />
             </div> : <PageNotFound />

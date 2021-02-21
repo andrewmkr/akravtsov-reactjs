@@ -1,7 +1,10 @@
+import React from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './index.css';
 import Input from '../UI/Input';
+import { login } from '../../store/auth';
 
 const LoginPage = () => { 
     const [inputs, setInputs] = useState({
@@ -37,6 +40,9 @@ const LoginPage = () => {
             errorMessage: 'Не менее 8 символов. Пароль должен содержать по крайней мере одну цифру и одну букву'
         }
     });
+
+    const state = useSelector(state => state);
+    const dispatch = useDispatch();
 
     const [formIsValid, setFormIsValid] = useState(false);
 
@@ -84,9 +90,8 @@ const LoginPage = () => {
         });
     }
 
-    return (
-        <form className="Login-form Login-form-layout">
-            <p className="welcome-text welcome-text-layout">Добро пожаловать</p>
+    const formLoggedOut = <div className="Login-form Login-form-layout">
+        <p className="welcome-text welcome-text-layout">Добро пожаловать</p>
             {formElementsArray.map(formElement => (
                 <Input
                     key={formElement.id}
@@ -98,9 +103,19 @@ const LoginPage = () => {
                     errorMessage={formElement.config.errorMessage}
                     changed={(event) => inputChangedHandler(event, formElement.id)} />
             ))}
-            <button disabled={!formIsValid}>Войти</button>
-        </form>
-    );
+            <button 
+                disabled={!formIsValid} 
+                onClick={() => {dispatch(login({userName: inputs.email.value, password: inputs.password.value}))}}
+            >Войти
+            </button>
+    </div>;
+
+    const formLoggedIn = <div className="Login-form Login-form-layout">
+        <p className="welcome-text welcome-text-layout">Вы вошли как</p>
+        <p className="welcome-text welcome-text-layout">{state.auth.user.userName}</p>
+    </div>;
+
+    return state.auth.user.userName ? formLoggedIn : formLoggedOut;
 }
 
 export default LoginPage;

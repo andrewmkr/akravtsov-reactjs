@@ -6,7 +6,7 @@ import * as actionTypes from './types';
 const URL = 'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json';
 const initialState = {
     cards: [],
-    readOnlyMode: false
+    readOnlyMode: true
 };
 
 export const fetchData = () => {
