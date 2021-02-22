@@ -30,7 +30,7 @@ function App() {
         <Route path="/" exact render={() => 
           <div>
             <Header>
-              Приветствую, {state.auth.user.userName ? state.auth.user.userName : 'Гость'}
+              Приветствую, {state.auth.user.userName || 'Гость'}
             </Header>
             <CardList />
           </div>

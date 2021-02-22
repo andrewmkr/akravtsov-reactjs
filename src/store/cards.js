@@ -5,7 +5,7 @@ import * as actionTypes from './types';
 
 const URL = 'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json';
 const initialState = {
-    cards: [],
+    data: [],
     readOnlyMode: true
 };
 
@@ -30,10 +30,10 @@ export const fetchData = () => {
 }
 
 const checkCard = (state, action) => {
-    const idx = state.cards.findIndex(card => {
+    const idx = state.data.findIndex(card => {
         return card.id === action.id;
     });
-    const updatedArr = [...state.cards];
+    const updatedArr = [...state.data];
     const updatedCard = updatedArr[idx];
 
     updatedCard.isChecked = action.isChecked;
@@ -43,10 +43,10 @@ const checkCard = (state, action) => {
 }
 
 const updateCard = (state, action) => {
-    const idx = state.cards.findIndex(card => {
+    const idx = state.data.findIndex(card => {
         return card.id === action.card.id;
     });
-    const updatedArr = [...state.cards];
+    const updatedArr = [...state.data];
 
     updatedArr[idx] = {...action.card};
 
@@ -54,7 +54,7 @@ const updateCard = (state, action) => {
 }
 
 const deleteChecked = state => {
-    return state.cards.filter(card => !card.isChecked);
+    return state.data.filter(card => !card.isChecked);
 }
 
 const createCard = state => {
@@ -64,7 +64,7 @@ const createCard = state => {
         text: '',
         isChecked: false
     }
-    return state.cards.concat(newCard);
+    return state.data.concat(newCard);
 }
 
 const reducer = (state = initialState, action) => {
@@ -72,27 +72,27 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_DATA:
             return {
                 ...state,
-                cards: action.cards
+                data: action.cards
             }
         case actionTypes.SAVE_CARD:
             return {
                 ...state,
-                cards: updateCard(state, action)
+                data: updateCard(state, action)
             }
         case actionTypes.CHECK_CARD:
             return {
                 ...state,
-                cards: checkCard(state, action)
+                data: checkCard(state, action)
             }
         case actionTypes.DELETE_CHECKED:
             return {
                 ...state,
-                cards: deleteChecked(state)
+                data: deleteChecked(state)
             }
         case actionTypes.ADD_CARD:
             return {
                 ...state,
-                cards: createCard(state)
+                data: createCard(state)
             }
         case actionTypes.READ_ONLY:
             return {

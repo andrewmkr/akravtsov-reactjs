@@ -6,17 +6,17 @@ import './index.css';
 
 const CardList = props => {
     const state = useSelector(state => state);
-    const [cardsCount, setCardsCount] = useState( state.cards.cards.length );
+    const [cardsCount, setCardsCount] = useState( state.cards.data.length );
     const scrollerRef = useRef( null );
 
     useEffect(() => {
-        if ( cardsCount && cardsCount < state.cards.cards.length ) {
+        if ( cardsCount && cardsCount < state.cards.data.length ) {
             scrollerRef.current.scrollIntoView({ behavior: 'smooth' }); 
         }
-        setCardsCount( state.cards.cards.length );
-    }, [cardsCount, state.cards.cards.length]);
+        setCardsCount( state.cards.data.length );
+    }, [cardsCount, state.cards.data.length]);
 
-    const list = () => state.cards.cards.map(card => {
+    const list = () => state.cards.data.map(card => {
         return <Card
             card={card}
             key={card.id} />
